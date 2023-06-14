@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".IniciarSesion"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -50,29 +50,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
 
-        <Button
-            android:id="@+id/btn_iniciar_sesion"
+        <EditText
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="INICIAR SESIÓN"
+            android:ems="10"
+            android:hint="Correo electrónico"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:layout_marginTop="30dp"/>
+
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="INGRESAR"
             android:textSize="18dp"
             android:background="#9FB26E6F"
-            android:textColor="@color/white"/>
-
-        <Button
-            android:id="@+id/btn_registrar"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:text="CREAR NUEVA CUENTA"
-            android:textSize="18dp"
-            android:background="#8C5657"
             android:textColor="@color/white"
-            android:layout_marginTop="40dp" />
-
+            android:layout_marginTop="30dp"/>
     </LinearLayout>
-
 
 </LinearLayout>
