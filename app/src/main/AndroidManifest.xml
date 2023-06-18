@@ -13,6 +13,12 @@
         android:theme="@style/Theme.CakeAndBake"
         tools:targetApi="31">
         <activity
+            android:name=".Producto"
+            android:exported="false" />
+        <activity
+            android:name=".PrincipalLocal"
+            android:exported="false" />
+        <activity
             android:name=".IniciarSesion"
             android:exported="false" />
         <activity
