@@ -8,6 +8,8 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     Button boton_iniciar_sesion;
+    Button boton_registro;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,5 +21,13 @@ public class MainActivity extends AppCompatActivity {
             Intent objeto = new Intent(this, IniciarSesion.class);
             startActivity(objeto);
         });
+        boton_registro = findViewById(R.id.btn_registrar);
+        boton_registro.setOnClickListener(v -> {
+            Intent objeto = new Intent(this, Registrarse.class);
+            startActivity(objeto);
+        });
+
+
+
     }
 }

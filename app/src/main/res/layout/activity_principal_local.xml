@@ -115,14 +115,14 @@ tools:context=".PrincipalLocal">
             <EditText
                 android:id="@+id/editTextAddress"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:hint="Ingrese una dirección" />
 
             <EditText
                 android:id="@+id/editActualAddress"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:hint="Usar ubicación actual" />
 
