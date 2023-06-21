@@ -16,16 +16,17 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:contentDescription="@string/logo"
             android:src="@drawable/cake_logo" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pasteleria Cake&amp;Bake"
+            android:text="@string/pasteleria_cake_and_bake"
             android:fontFamily="@font/sunflower"
-            android:layout_marginLeft="70dp"
+            android:layout_marginStart="70dp"
             android:layout_marginTop="18dp"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textColor="@color/white"/>
 
     </RelativeLayout>
@@ -51,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
-                    android:text="¡Hola Usuario!"
+                    android:text="@string/hola_usuario"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                 <TextView
@@ -59,7 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:text="Elige cómo quieres comprar" />
+                    android:text="@string/texto_de_compra" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="80dp"
@@ -71,60 +72,34 @@
                     android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:background="@drawable/rf_control_circle"
-                    android:contentDescription="Icono de menú"
+                    android:contentDescription="@string/menu"
                     android:src="@drawable/ic_menu" />
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/imageButton1"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/rf_control_circle_selected"
-                android:contentDescription="Icono de delivery"
-                android:src="@drawable/ic_delivery" />
-
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:background="@drawable/rf_control_circle"
-                android:contentDescription="Icono de localización"
-                android:src="@drawable/ic_local" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="0"
             android:padding="20dp"
             android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
                 <EditText
                     android:id="@+id/editTextAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:autofillHints="Ingrese una dirección"
                     android:layout_marginTop="20dp"
-                    android:hint="Ingrese una dirección" />
+                    android:hint="@string/ingrese_una_direccion" />
 
                 <EditText
                     android:id="@+id/editActualAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:autofillHints="Ingrese una dirección"
                     android:layout_marginTop="20dp"
-                    android:hint="Usar ubicación actual" />
+                    android:hint="@string/usar_ubicacion_actual" />
 
                 <ListView
                     android:id="@+id/listViewAddresses"
@@ -132,26 +107,21 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
+        </LinearLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/buttonSave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <Button
-                    android:id="@+id/buttonSave"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Guardar"
-                    android:textColor="@color/white" />
-            </LinearLayout>
-
-
-
-
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/btnguardar"
+                android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
