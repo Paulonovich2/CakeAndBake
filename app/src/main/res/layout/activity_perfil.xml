@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Perfil"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#B36E6F">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/cake_logo" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pasteleria Cake&amp;Bake"
+            android:fontFamily="@font/sunflower"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="18dp"
+            android:textSize="20dp"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:srcCompat="@drawable/baseline_person_24"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subir Foto"
+            android:layout_marginLeft="20dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="Nombre"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="Apellido"
+            android:inputType="textPersonName"/>
+
+        <EditText
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="Correo Electrónico"
+            android:inputType="textEmailAddress"/>
+    </LinearLayout>
+</LinearLayout>
