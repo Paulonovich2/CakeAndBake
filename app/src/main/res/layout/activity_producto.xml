@@ -52,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/hola_usuario"
+                    android:text="Productos para llevar"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                 <TextView
@@ -60,7 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:text="@string/texto_de_compra" />
+                    android:text="Destino: P. La Castellana 240" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="80dp"
@@ -79,49 +79,55 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="70dp"
             android:layout_weight="0"
-            android:padding="20dp"
-            android:orientation="vertical">
-                <EditText
-                    android:id="@+id/editTextAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:autofillHints="Ingrese una dirección"
-                    android:layout_marginTop="20dp"
-                    android:hint="@string/ingrese_una_direccion" />
-
-                <EditText
-                    android:id="@+id/editActualAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:autofillHints="Ingrese una dirección"
-                    android:layout_marginTop="20dp"
-                    android:hint="@string/usar_ubicacion_actual" />
-
-                <ListView
-                    android:id="@+id/listViewAddresses"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp" />
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/buttonPromocion"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Promociones"
+                android:textColor="@color/white" />
+            <Button
+                android:id="@+id/buttonPasteles"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Pasteles"
+                android:textColor="@color/white" />
+            <Button
+                android:id="@+id/buttonHelado"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Helados"
+                android:textColor="@color/white" />
+            <ImageButton
+                android:id="@+id/imageButton1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:contentDescription="Icono de delivery"
+                android:src="@drawable/shopping_car" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0"
+            android:padding="20dp"
             android:orientation="vertical">
-            <Button
-                android:id="@+id/buttonSave"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="@string/btnguardar"
-                android:textColor="@color/white" />
+
+            <ListView
+                    android:id="@+id/listViewAddresses"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
