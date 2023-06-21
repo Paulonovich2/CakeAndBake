@@ -1,4 +1,4 @@
-package com.pjimenez.cakeandbake.ui.gallery;
+package com.pjimenez.cakeandbake.ui.home.gallery;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

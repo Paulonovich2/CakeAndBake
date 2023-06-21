@@ -1,4 +1,4 @@
-package com.pjimenez.cakeandbake.ui.gallery;
+package com.pjimenez.cakeandbake.ui.home.gallery;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
