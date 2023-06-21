@@ -69,6 +69,7 @@
             android:layout_marginTop="30dp"/>
 
         <Button
+            android:id="@+id/btn_principal"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="INGRESAR"
