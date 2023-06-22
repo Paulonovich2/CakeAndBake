@@ -36,6 +36,12 @@
             android:name=".Registrarse"
             android:exported="false" />
         <activity
+            android:name=".Principal"
+            android:exported="false" />
+        <activity
+            android:name=".PrincipalLocal"
+            android:exported="false" />
+        <activity
             android:name=".IniciarSesion"
             android:exported="false" />
         <activity
