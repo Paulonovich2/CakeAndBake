@@ -123,7 +123,7 @@
             android:orientation="vertical">
 
             <ListView
-                    android:id="@+id/listViewAddresses"
+                    android:id="@+id/lst_pasteles"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"

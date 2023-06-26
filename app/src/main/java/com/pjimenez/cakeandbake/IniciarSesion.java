@@ -8,15 +8,15 @@ import android.widget.Button;
 
 public class IniciarSesion extends AppCompatActivity {
 
-    Button boton_principal;
+    Button boton_ingresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iniciar_sesion);
 
-        boton_principal = findViewById(R.id.btn_principal);
-        boton_principal.setOnClickListener(v -> {
+        boton_ingresar = findViewById(R.id.btn_ingresar);
+        boton_ingresar.setOnClickListener(v -> {
             Intent objeto = new Intent(this, Principal.class);
             startActivity(objeto);
         });

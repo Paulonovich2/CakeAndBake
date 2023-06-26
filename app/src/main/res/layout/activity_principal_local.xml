@@ -66,7 +66,7 @@ tools:context=".PrincipalLocal">
             android:layout_height="match_parent"
             android:layout_gravity="center">
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/btnMenu"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center"
@@ -84,19 +84,19 @@ tools:context=".PrincipalLocal">
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/imageButton1"
+            android:id="@+id/btn_delivery"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/rf_control_circle_selected"
+            android:background="@drawable/rf_control_circle"
             android:contentDescription="Icono de delivery"
             android:src="@drawable/ic_delivery" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/btn_locacion"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/rf_control_circle"
+            android:background="@drawable/rf_control_circle_selected"
             android:contentDescription="Icono de localización"
             android:src="@drawable/ic_local" />
     </LinearLayout>
@@ -113,21 +113,21 @@ tools:context=".PrincipalLocal">
             android:layout_weight="0"
             android:orientation="vertical">
             <EditText
-                android:id="@+id/editTextAddress"
+                android:id="@+id/txtDireccion"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:hint="Ingrese una dirección" />
 
             <EditText
-                android:id="@+id/editActualAddress"
+                android:id="@+id/txtUbicacionActual"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:hint="Usar ubicación actual" />
 
             <ListView
-                android:id="@+id/listViewAddresses"
+                android:id="@+id/lstUbicacionLocal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
@@ -140,7 +140,7 @@ tools:context=".PrincipalLocal">
             android:layout_weight="0"
             android:orientation="vertical">
             <Button
-                android:id="@+id/buttonSave"
+                android:id="@+id/btn_Guardar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

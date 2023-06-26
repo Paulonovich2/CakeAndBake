@@ -1,91 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Menu"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="2dp"
+    tools:context=".Principal">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="#B36E6F"
-        android:padding="15dp">
+        android:layout_height="60dp"
+        android:background="#B36E6F">
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:contentDescription="@string/nav_header_desc"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            app:srcCompat="@mipmap/ic_launcher_round" />
-
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/cake_logo" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/nav_header_title"
+            android:text="Pasteleria Cake&amp;Bake"
             android:fontFamily="@font/sunflower"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="111.5dp"
-            android:textColor="@color/white" />
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/sunflower"
-            android:layout_marginLeft="110dp"
-            android:textColor="@color/white"
-            android:text="@string/nav_header_subtitle" />
-
-        <TextView
-            android:id="@+id/textview_usuario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/nav_header_saludos"
-            android:layout_marginTop="90dp"
-            android:layout_marginLeft="30dp"
-            android:textColor="@color/white"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="18dp"
             android:textSize="20dp"
-            android:fontFamily="@font/sunflower"/>
-
-        <TextView
-            android:id="@+id/textview_bienvenido"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/nav_header_bienvenido"
-            android:layout_marginTop="115dp"
-            android:layout_marginLeft="30dp"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            android:fontFamily="@font/sunflower"/>
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="230dp"
-            android:layout_marginTop="60dp"
-            android:background="#FFFFFFFF"
-            android:src="@drawable/baseline_person_24"
-            tools:ignore="DuplicateIds" />
-
+            android:textColor="@color/white"/>
 
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp"
-        android:background="#372122">
+        android:paddingTop="5dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/lblUsuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="¡Hola Usuario!"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="Bienvenido a la pastelería" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="#FFFFFFFF"
+                    android:src="@drawable/baseline_person_24"
+                    tools:ignore="DuplicateIds" />
+            </LinearLayout>
+        </LinearLayout>
 
         <Button
-            android:id="@+id/buttonInicio1"
+            android:id="@+id/btnInicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -94,7 +85,7 @@
             android:background="#97A8A7"
             android:textColor="@color/black" />
         <Button
-            android:id="@+id/buttonPerfil1"
+            android:id="@+id/btnPerfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -103,16 +94,16 @@
             android:text="Mi Perfil"
             android:textColor="@color/black" />
         <Button
-            android:id="@+id/buttonPedidos1"
+            android:id="@+id/btnMisPedidos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="Mios Pedidos"
+            android:text="Mis Pedidos"
             android:background="#97A8A7"
             android:textColor="@color/black" />
         <Button
-            android:id="@+id/buttonContactanos1"
+            android:id="@+id/btnContactenos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -121,5 +112,4 @@
             android:text="Contactanos"
             android:textColor="@color/black" />
     </LinearLayout>
-
 </LinearLayout>

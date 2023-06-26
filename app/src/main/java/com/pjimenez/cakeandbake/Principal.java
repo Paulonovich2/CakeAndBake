@@ -4,21 +4,29 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 public class Principal extends AppCompatActivity {
 
-    ImageButton menu_desplegable;
+    ImageButton btn_locacion;
+    ImageButton btn_Menu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-        menu_desplegable = findViewById(R.id.imageButton_principal_barra);
-        menu_desplegable.setOnClickListener(v -> {
-            Intent objeto = new Intent(this, Menu.class);
-            startActivity(objeto);
+
+        btn_locacion = findViewById(R.id.btn_locacion);
+        btn_locacion.setOnClickListener(v -> {
+            Intent objPrincipalLocal = new Intent(this, PrincipalLocal.class);
+            startActivity(objPrincipalLocal);
+        });
+
+        btn_Menu = findViewById(R.id.btnMenu);
+        btn_Menu.setOnClickListener(v -> {
+            Intent objMenu = new Intent(this, Menu.class);
+            startActivity(objMenu);
         });
     }
 }
-

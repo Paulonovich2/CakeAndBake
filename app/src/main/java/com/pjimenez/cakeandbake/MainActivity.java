@@ -18,13 +18,13 @@ public class MainActivity extends AppCompatActivity {
 
         boton_iniciar_sesion = findViewById(R.id.btn_iniciar_sesion);
         boton_iniciar_sesion.setOnClickListener(v -> {
-            Intent objeto = new Intent(this, IniciarSesion.class);
-            startActivity(objeto);
+            Intent objInicioSesion = new Intent(this, IniciarSesion.class);
+            startActivity(objInicioSesion);
         });
         boton_registro = findViewById(R.id.btn_registrar);
         boton_registro.setOnClickListener(v -> {
-            Intent objeto = new Intent(this, Registrarse.class);
-            startActivity(objeto);
+            Intent objRegistrar = new Intent(this, Registrarse.class);
+            startActivity(objRegistrar);
         });
 
 

@@ -13,27 +13,10 @@
         android:theme="@style/Theme.CakeAndBake"
         tools:targetApi="31">
         <activity
-            android:name=".PedidoRegistrado"
-            android:exported="false" />
-        <activity
             android:name=".ConfirmarPedido"
             android:exported="false" />
         <activity
-            android:name=".Pedido"
-            android:exported="false" />
-        <activity
-            android:name=".Perfil"
-            android:exported="false" />
-        <activity
             android:name=".Contactenos"
-            android:exported="false" />
-        <activity
-            android:name=".Menu_usuario"
-            android:exported="false"
-            android:label="@string/title_activity_menu_usuario"
-            android:theme="@style/Theme.CakeAndBake.NoActionBar" />
-        <activity
-            android:name=".Registrarse"
             android:exported="false" />
         <activity
             android:name=".IniciarSesion"
@@ -47,6 +30,40 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Menu_usuario"
+            android:exported="false"
+            android:label="@string/title_activity_menu_usuario"
+            android:theme="@style/Theme.CakeAndBake.NoActionBar" />
+        <activity
+            android:name=".Pedido"
+            android:exported="false" />
+        <activity
+            android:name=".Menu"
+            android:exported="false" />
+        <activity
+            android:name=".PedidoRegistrado"
+            android:exported="false" />
+        <activity
+            android:name=".Perfil"
+            android:exported="false" />
+        <activity
+            android:name=".Principal"
+            android:exported="false" />
+        <activity
+            android:name=".PrincipalLocal"
+            android:exported="false" />
+        <activity
+            android:name=".Producto"
+            android:exported="false" />
+        <activity
+            android:name=".ProductoPedido"
+            android:exported="false" />
+        <activity
+            android:name=".Registrarse"
+            android:exported="false" />
+        <activity
+            android:name=".SeguirComprando"
+            android:exported="false" />
     </application>
-
 </manifest>
