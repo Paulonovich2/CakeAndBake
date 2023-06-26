@@ -36,6 +36,9 @@
             android:name=".Registrarse"
             android:exported="false" />
         <activity
+            android:name=".Menu"
+            android:exported="false" />
+        <activity
             android:name=".Principal"
             android:exported="false" />
         <activity
