@@ -140,7 +140,7 @@ tools:context=".PrincipalLocal">
             android:layout_weight="0"
             android:orientation="vertical">
             <Button
-                android:id="@+id/btn_Guardar"
+                android:id="@+id/btn_Guardar_local"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

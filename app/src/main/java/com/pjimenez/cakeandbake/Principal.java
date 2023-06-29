@@ -12,6 +12,8 @@ public class Principal extends AppCompatActivity {
     ImageButton btn_locacion;
     ImageButton btn_Menu;
 
+    Button btn_productos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +28,12 @@ public class Principal extends AppCompatActivity {
         btn_Menu = findViewById(R.id.btnMenu);
         btn_Menu.setOnClickListener(v -> {
             Intent objMenu = new Intent(this, Menu.class);
+            startActivity(objMenu);
+        });
+
+        btn_productos = findViewById(R.id.btn_Guardar_principal);
+        btn_productos.setOnClickListener(v -> {
+            Intent objMenu = new Intent(this, Producto.class);
             startActivity(objMenu);
         });
     }

@@ -16,6 +16,7 @@ public class PrincipalLocal extends AppCompatActivity {
 
     ImageButton btn_delivery;
     ImageButton btn_Menu;
+    Button btn_productos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,12 @@ public class PrincipalLocal extends AppCompatActivity {
         btn_Menu = findViewById(R.id.btnMenu);
         btn_Menu.setOnClickListener(v -> {
             Intent objMenu = new Intent(this, Menu.class);
+            startActivity(objMenu);
+        });
+
+        btn_productos = findViewById(R.id.btn_Guardar_local);
+        btn_productos.setOnClickListener(v -> {
+            Intent objMenu = new Intent(this, Producto.class);
             startActivity(objMenu);
         });
 
