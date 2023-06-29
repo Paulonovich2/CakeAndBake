@@ -36,10 +36,16 @@
             android:name=".Registrarse"
             android:exported="false" />
         <activity
+            android:name=".SeguirComprando"
+            android:exported="false" />
+        <activity
             android:name=".Menu"
             android:exported="false" />
         <activity
             android:name=".Principal"
+            android:exported="false" />
+        <activity
+            android:name=".Producto"
             android:exported="false" />
         <activity
             android:name=".PrincipalLocal"
