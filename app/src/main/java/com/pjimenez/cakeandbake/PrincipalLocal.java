@@ -1,6 +1,8 @@
 package com.pjimenez.cakeandbake;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +13,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import com.pjimenez.cakeandbake.entidades.Local;
+import com.pjimenez.cakeandbake.model.DAOLocal;
+import com.pjimenez.cakeandbake.model.DAOUsuario;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,15 +25,20 @@ public class PrincipalLocal extends AppCompatActivity {
     ImageButton btn_delivery;
     ImageButton btn_Menu;
     Button btn_productos;
-
-    private ListView listView;
-    private String[] data = {"Local San Isidro", "Local San Miguel", "Local Ate"};
+    RecyclerView lstUbicacionLocal;
+    filaLocal adaptador;
+    List<Local> listaLocal =new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal_local);
 
+        asignarReferencias();
+        cargarDatos();
+    }
+
+    private void asignarReferencias() {
         btn_delivery = findViewById(R.id.btn_delivery);
         btn_delivery.setOnClickListener(v -> {
             Intent objeto = new Intent(this, Principal.class);
@@ -46,25 +57,15 @@ public class PrincipalLocal extends AppCompatActivity {
             startActivity(objMenu);
         });
 
-        listView = findViewById(R.id.lstUbicacionLocal);
+        lstUbicacionLocal = findViewById(R.id.lstUbicacionLocal);
+    }
 
-        // Configura el adaptador del ListView
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, data);
-        listView.setAdapter(adapter);
-
-        // Establece un listener de clic para los elementos del ListView
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Obtén el elemento seleccionado del ListView
-                String selectedItem = (String) parent.getItemAtPosition(position);
-
-                // Crea un Intent para abrir la otra actividad
-                Intent intent = new Intent(PrincipalLocal.this, Producto.class);
-                // Pasa cualquier dato adicional a la otra actividad si es necesario
-                intent.putExtra("dato", selectedItem);
-                startActivity(intent);
-            }
-        });
+    private void cargarDatos() {
+        DAOLocal daoLocal = new DAOLocal(getApplicationContext());
+        daoLocal.abrirBD();
+        listaLocal =daoLocal.listarTodo();
+        adaptador=new filaLocal(this, listaLocal);
+        lstUbicacionLocal.setAdapter(adaptador);
+        lstUbicacionLocal.setLayoutManager(new LinearLayoutManager(this));
     }
 }

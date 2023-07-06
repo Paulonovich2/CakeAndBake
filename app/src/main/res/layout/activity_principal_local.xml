@@ -2,6 +2,7 @@
 <LinearLayout
 xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical"
@@ -29,59 +30,60 @@ tools:context=".PrincipalLocal">
         android:textColor="@color/white"/>
 
 </RelativeLayout>
-
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="5dp"
-    android:orientation="vertical">
+    android:layout_height="80dp">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/lblUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="¡Hola Usuario!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Elige cómo quieres comprar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblUsuario" />
+
+    <ImageButton
+        android:id="@+id/btnMenu"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/rf_control_circle"
+        android:contentDescription="Icono de menú"
+        android:src="@drawable/ic_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="10dp">
 
-        <LinearLayout
-            android:layout_width="320dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:text="¡Hola Usuario!"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="Elige cómo quieres comprar" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="80dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center">
-            <ImageButton
-                android:id="@+id/btnMenu"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:background="@drawable/rf_control_circle"
-                android:contentDescription="Icono de menú"
-                android:src="@drawable/ic_menu" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            android:text="Recojo en local"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/btn_delivery"
@@ -90,64 +92,41 @@ tools:context=".PrincipalLocal">
             android:layout_marginEnd="20dp"
             android:background="@drawable/rf_control_circle"
             android:contentDescription="Icono de delivery"
-            android:src="@drawable/ic_delivery" />
+            android:src="@drawable/ic_delivery"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/btn_locacion"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/rf_control_circle_selected"
-            android:contentDescription="Icono de localización"
-            android:src="@drawable/ic_local" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="20dp"
-        android:orientation="vertical">
+        android:layout_height="400dp"
+        android:layout_marginTop="10dp"
+        android:layout_margin="20dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:orientation="vertical">
-            <EditText
-                android:id="@+id/txtDireccion"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:hint="Ingrese una dirección" />
-
-            <EditText
-                android:id="@+id/txtUbicacionActual"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:hint="Usar ubicación actual" />
-
-            <ListView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lstUbicacionLocal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_weight="0"
-            android:orientation="vertical">
-            <Button
-                android:id="@+id/btn_Guardar_local"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="Guardar"
-                android:textColor="@color/white" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+                tools:listitem="@layout/activity_fila_local" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/btn_Guardar_local"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Guardar"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
