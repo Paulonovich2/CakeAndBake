@@ -2,11 +2,12 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="2dp"
-    tools:context=".PrincipalLocal">
+    tools:context=".Producto">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -31,89 +32,97 @@
 
     </RelativeLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:id="@+id/lblUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="¡Hola Usuario!"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/lblDireccionLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Direccion del entLocal seleccionado"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblUsuario" />
+
+        <ImageButton
+            android:id="@+id/btnMenu"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/rf_control_circle"
+            android:contentDescription="Icono de menú"
+            android:src="@drawable/ic_menu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="#D5D6D6">
+
+        <CheckBox
+            android:id="@+id/checkboxTorta"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Torta"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/checkboxHelado"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:text="Helado"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/checkboxCheesecake"
+            app:layout_constraintStart_toEndOf="@+id/checkboxTorta"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/checkboxCheesecake"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:text="Cheesecake"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="5dp"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="320dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Productos para llevar"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:text="Destino: P. La Castellana 240" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center">
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/rf_control_circle"
-                    android:contentDescription="@string/menu"
-                    android:src="@drawable/ic_menu" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
-            android:layout_height="70dp"
-            android:layout_weight="0"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/buttonPromocion"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Promociones"
-                android:textColor="@color/white" />
-            <Button
-                android:id="@+id/buttonPasteles"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Pasteles"
-                android:textColor="@color/white" />
-            <Button
-                android:id="@+id/buttonHelado"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Helados"
-                android:textColor="@color/white" />
-            <ImageButton
-                android:id="@+id/imageButton1"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:contentDescription="Icono de delivery"
-                android:src="@drawable/shopping_car" />
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

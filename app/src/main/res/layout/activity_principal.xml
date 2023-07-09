@@ -32,7 +32,9 @@
     </RelativeLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="80dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
 
         <TextView
             android:id="@+id/lblUsuario"
@@ -46,7 +48,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/lblDireccionLocal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -70,7 +72,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="#D5D6D6">
 
         <TextView
             android:id="@+id/textView8"
@@ -99,7 +103,6 @@
 
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -113,12 +116,29 @@
             android:padding="20dp"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/txtDireccion"
+            <Button
+                android:id="@+id/btnDireccion"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:hint="Ingrese una dirección" />
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="20dp"
+                android:background="#B36E6F"
+                android:text="Ingrese una dirección"
+                android:textAllCaps="false"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btnUbicacionActual"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="20dp"
+                android:background="#B36E6F"
+                android:text="Usar ubicación actual"
+                android:textAllCaps="false"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/txtUbicacionActual"
@@ -130,11 +150,14 @@
             <Button
                 android:id="@+id/btn_Guardar_principal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:textSize="20dp"
+                android:background="#B36E6F"
                 android:text="Guardar"
                 android:textColor="@color/white" />
+
 
         </LinearLayout>
     </LinearLayout>

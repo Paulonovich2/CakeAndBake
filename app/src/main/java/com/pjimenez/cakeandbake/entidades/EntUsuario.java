@@ -1,6 +1,6 @@
 package com.pjimenez.cakeandbake.entidades;
 
-public class Usuario {
+public class EntUsuario {
     private int id;
     private String nombre;
     private String apellido;
@@ -8,8 +8,16 @@ public class Usuario {
     private String password;
     private String imagen;
 
-    public Usuario(int id, String nombre, String apellido, String email, String password, String imagen) {
-        this.id=id;
+    public EntUsuario(int id, String nombre, String apellido, String email, String password, String imagen) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.password = password;
+        this.imagen = imagen;
+    }
+
+    public EntUsuario(String nombre, String apellido, String email, String password, String imagen) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;

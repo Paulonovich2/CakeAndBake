@@ -1,4 +1,4 @@
 package com.pjimenez.cakeandbake.entidades;
 
-public class Pedido {
+public class EntPedido {
 }

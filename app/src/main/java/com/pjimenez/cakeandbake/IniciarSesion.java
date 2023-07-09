@@ -8,13 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.pjimenez.cakeandbake.entidades.Usuario;
+import com.pjimenez.cakeandbake.entidades.EntUsuario;
 import com.pjimenez.cakeandbake.model.DAOUsuario;
 
 public class IniciarSesion extends AppCompatActivity {
 
-    EditText txtEmail,txtPassword;
-    Button boton_ingresar;
+    EditText txtEmail, txtPassword;
+    Button botonIngresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,23 +25,30 @@ public class IniciarSesion extends AppCompatActivity {
 
     private void asignarReferencias() {
         txtEmail = findViewById(R.id.txtEmail);
-        txtPassword= findViewById(R.id.txtPassword);
-        boton_ingresar = findViewById(R.id.btn_ingresar);
-        boton_ingresar.setOnClickListener(v -> {
+        txtPassword = findViewById(R.id.txtPassword);
+        botonIngresar = findViewById(R.id.btn_ingresar);
+        botonIngresar.setOnClickListener(v -> {
             String email = txtEmail.getText().toString();
             String password = txtPassword.getText().toString();
 
             DAOUsuario daoUsuario = new DAOUsuario(getApplicationContext());
-            Usuario usuarioValido = daoUsuario.validarExistenciaUsuario(email, password);
+            EntUsuario entUsuarioValido = daoUsuario.validarExistenciaUsuario(email, password);
 
-            if (usuarioValido != null) {
+            if (entUsuarioValido != null) {
+                SessionManager sessionManager = new SessionManager(getApplicationContext());
+                sessionManager.guardarSesionActiva(entUsuarioValido);
+
                 Intent intent = new Intent(IniciarSesion.this, Principal.class);
-                intent.putExtra("u_id",usuarioValido.getId());
-                intent.putExtra("u_nombres",usuarioValido.getNombre() + " " + usuarioValido.getApellido());
                 startActivity(intent);
+                finish();
             } else {
                 Toast.makeText(IniciarSesion.this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void guardarSesionActiva(EntUsuario entUsuarioValido) {
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+        sessionManager.guardarSesionActiva(entUsuarioValido);
     }
 }

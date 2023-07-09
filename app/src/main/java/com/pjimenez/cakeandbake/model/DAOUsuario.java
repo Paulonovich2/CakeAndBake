@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.pjimenez.cakeandbake.entidades.Usuario;
+import com.pjimenez.cakeandbake.entidades.EntUsuario;
 import com.pjimenez.cakeandbake.util.BaseDatos;
 
 public class DAOUsuario {
@@ -26,15 +26,15 @@ public class DAOUsuario {
         db.close();
     }
 
-    public Usuario validarExistenciaUsuario(String email, String password) {
+    public EntUsuario validarExistenciaUsuario(String email, String password) {
         abrirBD();
 
-        String[] projection = {"id", "nombre", "apellido", "email", "password", "imagen"};
-        String selection = "email = ? AND password = ?";
+        String[] projection = {"user_id", "user_name", "user_lastname", "user_mail", "user_password", "user_image"};
+        String selection = "user_mail = ? AND user_password = ?";
         String[] selectionArgs = {email, password};
 
         Cursor cursor = db.query(
-                "usuario",
+                "Usuario",
                 projection,
                 selection,
                 selectionArgs,
@@ -43,54 +43,54 @@ public class DAOUsuario {
                 null
         );
 
-        Usuario usuario = null;
+        EntUsuario entUsuario = null;
         if (cursor.moveToFirst()) {
-            int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
-            String nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
-            String apellido = cursor.getString(cursor.getColumnIndexOrThrow("apellido"));
-            String pass = cursor.getString(cursor.getColumnIndexOrThrow("password"));
-            String imagen = cursor.getString(cursor.getColumnIndexOrThrow("imagen"));
+            int id = cursor.getInt(cursor.getColumnIndexOrThrow("user_id"));
+            String nombre = cursor.getString(cursor.getColumnIndexOrThrow("user_name"));
+            String apellido = cursor.getString(cursor.getColumnIndexOrThrow("user_lastname"));
+            String pass = cursor.getString(cursor.getColumnIndexOrThrow("user_password"));
+            String imagen = cursor.getString(cursor.getColumnIndexOrThrow("user_image"));
 
-            usuario = new Usuario(id, nombre, apellido, email, pass, imagen);
+            entUsuario = new EntUsuario(id, nombre, apellido, email, pass, imagen);
         }
 
         cursor.close();
         cerrarBD();
 
-        return usuario;
+        return entUsuario;
     }
 
-    public boolean registrarUsuario(Usuario usuario) {
+    public boolean registrarUsuario(EntUsuario entUsuario) {
         abrirBD();
 
         ContentValues values = new ContentValues();
-        values.put("nombre", usuario.getNombre());
-        values.put("apellido", usuario.getApellido());
-        values.put("email", usuario.getEmail());
-        values.put("password", usuario.getPassword());
-        values.put("imagen", usuario.getImagen());
+        values.put("user_name", entUsuario.getNombre());
+        values.put("user_lastname", entUsuario.getApellido());
+        values.put("user_mail", entUsuario.getEmail());
+        values.put("user_password", entUsuario.getPassword());
+        values.put("user_image", entUsuario.getImagen());
 
-        long resultado = db.insert("usuario", null, values);
+        long resultado = db.insert("Usuario", null, values);
 
         cerrarBD();
 
         return resultado != -1;
     }
 
-    public boolean actualizarUsuario(Usuario usuario) {
+    public boolean actualizarUsuario(EntUsuario entUsuario) {
         abrirBD();
 
         ContentValues values = new ContentValues();
-        values.put("nombre", usuario.getNombre());
-        values.put("apellido", usuario.getApellido());
-        values.put("email", usuario.getEmail());
-        values.put("password", usuario.getPassword());
-        values.put("imagen", usuario.getImagen());
+        values.put("user_name", entUsuario.getNombre());
+        values.put("user_lastname", entUsuario.getApellido());
+        values.put("user_mail", entUsuario.getEmail());
+        values.put("user_password", entUsuario.getPassword());
+        values.put("user_image", entUsuario.getImagen());
 
-        String selection = "id = ?";
-        String[] selectionArgs = {String.valueOf(usuario.getId())};
+        String selection = "user_id = ?";
+        String[] selectionArgs = {String.valueOf(entUsuario.getId())};
 
-        int filasActualizadas = db.update("usuario", values, selection, selectionArgs);
+        int filasActualizadas = db.update("Usuario", values, selection, selectionArgs);
 
         cerrarBD();
 

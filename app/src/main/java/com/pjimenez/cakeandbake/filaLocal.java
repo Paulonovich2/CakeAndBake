@@ -11,18 +11,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.pjimenez.cakeandbake.entidades.Local;
+import com.pjimenez.cakeandbake.entidades.EntLocal;
 
 import java.util.ArrayList;
 import java.util.List;
 public class filaLocal extends RecyclerView.Adapter<filaLocal.MyViewHolder>{
 
     Context context;
-    List<Local> listaLocal = new ArrayList<>();
+    List<EntLocal> listaEntLocal = new ArrayList<>();
+    SessionManager sessionManager;
 
-    public filaLocal(Context context, List<Local> listaLocal){
+    public filaLocal(Context context, List<EntLocal> listaEntLocal){
         this.context=context;
-        this.listaLocal=listaLocal;
+        this.listaEntLocal = listaEntLocal;
+        sessionManager = new SessionManager(context);
     }
 
     @NonNull
@@ -35,20 +37,19 @@ public class filaLocal extends RecyclerView.Adapter<filaLocal.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull filaLocal.MyViewHolder holder, int position) {
-        holder.filaDireccion.setText(listaLocal.get(position).getDireccion()+"");
+        holder.filaDireccion.setText(listaEntLocal.get(position).getDireccion()+"");
         holder.filaSeleccionar.setOnClickListener(v -> {
-            Intent intent=new Intent(context,Producto.class);
-            intent.putExtra("l_id",listaLocal.get(position).getId()+"");
-            intent.putExtra("l_direccion",listaLocal.get(position).getDireccion()+"");
-            intent.putExtra("l_latitud",listaLocal.get(position).getLatitud()+"");
-            intent.putExtra("l_longitud",listaLocal.get(position).getLongitud()+"");
+            EntLocal localSeleccionado = listaEntLocal.get(position);
+            sessionManager.guardarLocalSeleccionado(localSeleccionado);
+
+            Intent intent = new Intent(context, Producto.class);
             context.startActivity(intent);
         });
     }
 
     @Override
     public int getItemCount() {
-        return listaLocal.size();
+        return listaEntLocal.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

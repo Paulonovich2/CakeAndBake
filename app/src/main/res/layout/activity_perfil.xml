@@ -41,7 +41,7 @@
             app:srcCompat="@drawable/baseline_person_24"/>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnActualizarFoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Subir Foto"
@@ -52,33 +52,45 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="5dp">
 
         <EditText
-            android:layout_marginTop="30dp"
-            android:layout_gravity="center"
+            android:id="@+id/txtNombre"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:layout_marginTop="30dp"
             android:ems="10"
             android:hint="Nombre"
             android:inputType="textPersonName" />
 
         <EditText
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:id="@+id/txtApellido"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:layout_marginTop="30dp"
             android:ems="10"
             android:hint="Apellido"
             android:inputType="textPersonName"/>
 
         <EditText
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:id="@+id/txtCorreo"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:layout_marginTop="30dp"
             android:ems="10"
             android:hint="Correo Electrónico"
             android:inputType="textEmailAddress"/>
+
+        <Button
+            android:id="@+id/btnActualizarPerfil"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Actualizar"
+            android:textSize="20dp"
+            android:background="#B36E6F"
+            android:textColor="@color/white"
+            android:layout_marginTop="30dp"/>
     </LinearLayout>
 </LinearLayout>

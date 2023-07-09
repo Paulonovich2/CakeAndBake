@@ -1,53 +1,184 @@
 package com.pjimenez.cakeandbake;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.pjimenez.cakeandbake.entidades.EntLocal;
+import com.pjimenez.cakeandbake.entidades.EntUsuario;
+import com.pjimenez.cakeandbake.model.DAOProducto;
+import com.pjimenez.cakeandbake.entidades.EntProducto;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Producto extends AppCompatActivity {
 
-    Button btn_pedido_info;
-
+    CheckBox checkboxTorta, checkboxHelado, checkboxCheesecake;
     private ListView listView;
-    private String[] data = {"Tarta de fresa", "Pastel de manzana", "Pie de limon"};
+    private List<EntProducto> productos, productosFiltrados;
+    TextView lblUsuario, lblDireccionLocal;
+    private String nombreCliente, direccionLocal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producto);
 
-        List<String> elementos = new ArrayList<>();
-        elementos.add("Tarta de fresa");
-        elementos.add("Pastel de manzana");
-        elementos.add("Pie de limon");
+        asignarReferencia();
+        mostrarNombreUsuario();
+        mostrarNombreDireccion();
 
+        // Crear una lista vacía para los productos filtrados
+        productosFiltrados = new ArrayList<>();
+    }
+
+    private void asignarReferencia() {
+        lblUsuario = findViewById(R.id.lblUsuario);
+        lblDireccionLocal=findViewById(R.id.lblDireccionLocal);
+        checkboxTorta = findViewById(R.id.checkboxTorta);
+        checkboxHelado = findViewById(R.id.checkboxHelado);
+        checkboxCheesecake = findViewById(R.id.checkboxCheesecake);
+
+        // Obtener los datos del Intent
+        Intent intent = getIntent();
+        if (intent != null) {
+            nombreCliente = intent.getStringExtra("nombreCliente");
+            direccionLocal = intent.getStringExtra("direccionLocal");
+        }
+
+        // Inicializar el ListView
         listView = findViewById(R.id.lst_pasteles);
 
-        // Configura el adaptador del ListView
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, data);
+        // Obtener la lista de productos desde el DAO
+        DAOProducto daoProducto = new DAOProducto(this);
+        productos = daoProducto.listarTodo();
+
+        // Crear una lista de nombres de productos
+        List<String> nombresProductos = new ArrayList<>();
+        for (EntProducto producto : productos) {
+            nombresProductos.add(producto.getDescripcion());
+        }
+
+        // Configurar el adaptador del ListView
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, nombresProductos);
         listView.setAdapter(adapter);
 
-        // Establece un listener de clic para los elementos del ListView
+        // Establecer un listener de clic para los elementos del ListView
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Obtén el elemento seleccionado del ListView
-                String selectedItem = (String) parent.getItemAtPosition(position);
+                // Obtener el producto seleccionado del ListView
+                EntProducto productoSeleccionado = productos.get(position);
 
-                // Crea un Intent para abrir la otra actividad
+                // Crear un Intent para abrir la otra actividad
                 Intent intent = new Intent(Producto.this, ProductoPedido.class);
                 // Pasa cualquier dato adicional a la otra actividad si es necesario
-                intent.putExtra("dato", selectedItem);
+                intent.putExtra("nombreCliente", nombreCliente);
+                intent.putExtra("direccionLocal", direccionLocal);
+                intent.putExtra("producto", productoSeleccionado.getDescripcion());
                 startActivity(intent);
             }
         });
+
+        List<EntProducto> productosFiltrados = new ArrayList<>();
+
+        checkboxTorta.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                filtrarProductosPorTipo(1, isChecked);
+                mostrarProductosFiltrados();
+            }
+        });
+
+        checkboxHelado.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                filtrarProductosPorTipo(2, isChecked);
+                mostrarProductosFiltrados();
+            }
+        });
+
+        checkboxCheesecake.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                filtrarProductosPorTipo(3, isChecked);
+                mostrarProductosFiltrados();
+            }
+        });
+    }
+
+    private void filtrarProductosPorTipo(int tipoId, boolean isChecked) {
+        if (isChecked) {
+            // Agregar los productos de tipo "Torta" a la lista de productos filtrados
+            List<EntProducto> productosPorTipo = new ArrayList<>();
+            for (EntProducto producto : productos) {
+                if (producto.getTipoId() == tipoId) {
+                    productosPorTipo.add(producto);
+                }
+            }
+            productosFiltrados.addAll(productosPorTipo);
+        } else {
+            // Remover los productos de tipo "Torta" de la lista de productos filtrados
+            List<EntProducto> productosPorTipo = new ArrayList<>();
+            for (EntProducto producto : productosFiltrados) {
+                if (producto.getTipoId() == tipoId) {
+                    productosPorTipo.add(producto);
+                }
+            }
+            productosFiltrados.removeAll(productosPorTipo);
+        }
+    }
+
+    private void mostrarNombreUsuario() {
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+
+        if (sessionManager.sesionActiva()) {
+            EntUsuario entUsuario = sessionManager.obtenerUsuario();
+            String userFullName = entUsuario.getNombre() + " " + entUsuario.getApellido();
+            lblUsuario.setText("¡Hola " + userFullName + "!");
+        }
+    }
+
+    private void mostrarNombreDireccion() {
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+        EntLocal localSeleccionado = sessionManager.obtenerLocalSeleccionado();
+
+        if (localSeleccionado != null) {
+            String direccionLocal = localSeleccionado.getDireccion();
+            lblDireccionLocal.setText("Tienda: " + direccionLocal);
+        }
+    }
+
+    private void mostrarProductosFiltrados() {
+        // Crear una lista de nombres de productos filtrados
+        List<String> nombresProductosFiltrados = new ArrayList<>();
+        for (EntProducto producto : productosFiltrados) {
+            nombresProductosFiltrados.add(producto.getDescripcion());
+        }
+
+        // Crear un nuevo adaptador con la lista de nombres de productos filtrados
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, nombresProductosFiltrados);
+
+        // Establecer el nuevo adaptador en el ListView
+        listView.setAdapter(adapter);
     }
 }

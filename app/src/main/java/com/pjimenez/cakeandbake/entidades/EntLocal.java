@@ -1,16 +1,22 @@
 package com.pjimenez.cakeandbake.entidades;
 
-public class Local {
+public class EntLocal {
     private int id;
     private String direccion;
     private double latitud;
     private double longitud;
+    private String telefono;
 
-    public Local(int id, String direccion, double latitud, double longitud) {
+    public EntLocal(int id, String direccion, double latitud, double longitud, String telefono) {
         this.id = id;
         this.direccion = direccion;
         this.latitud = latitud;
         this.longitud = longitud;
+        this.telefono = telefono;
+    }
+
+    public EntLocal() {
+
     }
 
     public int getId() {
@@ -44,4 +50,7 @@ public class Local {
     public void setLongitud(double longitud) {
         this.longitud = longitud;
     }
+    public String getTelefono(){return telefono;}
+
+    public void setTelefono(String telefono){this.telefono=telefono;}
 }
