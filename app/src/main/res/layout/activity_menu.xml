@@ -2,11 +2,12 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="2dp"
-    tools:context=".Principal">
+    tools:context=".Menu">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -29,87 +30,83 @@
             android:textColor="@color/white"/>
 
     </RelativeLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_height="80dp">
+
+        <TextView
+            android:id="@+id/lblUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="¡Hola Usuario!"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/lblDireccionLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Elige cómo quieres comprar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblUsuario" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="5dp"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="320dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/lblUsuario"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:text="¡Hola Usuario!"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:text="Bienvenido a la pastelería" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center">
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="#FFFFFFFF"
-                    android:src="@drawable/baseline_person_24"
-                    tools:ignore="DuplicateIds" />
-            </LinearLayout>
-        </LinearLayout>
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="5dp">
 
         <Button
             android:id="@+id/btnInicio"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="Inicio"
-            android:background="#97A8A7"
-            android:textColor="@color/black" />
+            android:textSize="20dp"
+            android:background="#B36E6F"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:text="Inicio" />
+
         <Button
             android:id="@+id/btnPerfil"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="#97A8A7"
-            android:text="Mi Perfil"
-            android:textColor="@color/black" />
+            android:textSize="20dp"
+            android:background="#B36E6F"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:text="Mi Perfil" />
+
         <Button
             android:id="@+id/btnMisPedidos"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="Mis Pedidos"
-            android:background="#97A8A7"
-            android:textColor="@color/black" />
+            android:textSize="20dp"
+            android:background="#B36E6F"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:text="Mis Pedidos" />
+
         <Button
             android:id="@+id/btnContactenos"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="#97A8A7"
-            android:text="Contactanos"
-            android:textColor="@color/black" />
+            android:textSize="20dp"
+            android:background="#B36E6F"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:text="Contactanos" />
+
     </LinearLayout>
+
+
 </LinearLayout>
