@@ -113,56 +113,29 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="250dp"
         android:layout_margin="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Detalles de compra"
             android:layout_marginTop="20dp"
+            android:text="Detalles de compra"
             android:textSize="20dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="Tarta de fresa"
-            android:textSize="20dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginLeft="300dp"
-            android:textStyle="bold"
-            android:text="S/ 90.00"
-            android:textSize="20dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="90dp"
-            android:text="Monto de delivery"
-            android:textSize="20dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="90dp"
-            android:layout_marginLeft="300dp"
-            android:textStyle="bold"
-            android:text="S/ 10.00"
-            android:textSize="20dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lst_pedidos"
+            android:layout_width="379dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="48dp" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="#B36E6F"
-        android:layout_marginTop="120dp">
+        android:background="#B36E6F">
 
         <TextView
             android:layout_width="wrap_content"
