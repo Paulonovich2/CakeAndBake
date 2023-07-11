@@ -47,6 +47,7 @@ public class BaseDatos extends SQLiteOpenHelper {
     private static final String TABLE_PEDIDO = "Pedido";
     private static final String COLUMN_PEDIDO_USER_ID = "user_id";
     private static final String COLUMN_PEDIDO_PROD_ID = "prod_id";
+    private static final String COLUMN_PEDIDO_PROD_DESCRIP = "prod_description";
     private static final String COLUMN_PEDIDO_LOCAL_ID = "local_id";
     private static final String COLUMN_PEDIDO_DIR_ID = "dir_id";
     private static final String COLUMN_PEDIDO_CANTIDAD = "pedido_cantidad";
@@ -176,11 +177,13 @@ public class BaseDatos extends SQLiteOpenHelper {
         String queryPedido = "CREATE TABLE " + TABLE_PEDIDO + " ("
                 + COLUMN_PEDIDO_USER_ID + " INTEGER NOT NULL, "
                 + COLUMN_PEDIDO_PROD_ID + " INTEGER NOT NULL, "
+                + COLUMN_PEDIDO_PROD_DESCRIP + " INTEGER NOT NULL, "
                 + COLUMN_PEDIDO_LOCAL_ID + " INTEGER NOT NULL, "
                 + COLUMN_PEDIDO_DIR_ID + " INTEGER NOT NULL, "
                 + COLUMN_PEDIDO_CANTIDAD + " INTEGER NOT NULL, "
                 + "FOREIGN KEY (" + COLUMN_PEDIDO_USER_ID + ") REFERENCES " + TABLE_USUARIO + "(" + COLUMN_USER_ID + "), "
                 + "FOREIGN KEY (" + COLUMN_PEDIDO_PROD_ID + ") REFERENCES " + TABLE_PRODUCTO + "(" + COLUMN_PROD_ID + "), "
+                + "FOREIGN KEY (" + COLUMN_PEDIDO_PROD_DESCRIP + ") REFERENCES " + TABLE_PRODUCTO + "(" + COLUMN_PROD_ID + "), "
                 + "FOREIGN KEY (" + COLUMN_PEDIDO_LOCAL_ID + ") REFERENCES " + TABLE_LOCAL + "(" + COLUMN_LOCAL_ID + "), "
                 + "FOREIGN KEY (" + COLUMN_PEDIDO_DIR_ID + ") REFERENCES " + TABLE_DIRECCION_USUARIO + "(" + COLUMN_DIR_ID + ")"
                 + ");";
