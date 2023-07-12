@@ -34,6 +34,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 
     private static final String TABLE_PRODUCTO = "Producto";
     private static final String COLUMN_PROD_ID = "prod_id";
+    private static final String COLUMN_PROD_TITTLE ="prod_tittle";
     private static final String COLUMN_PROD_DESCRIPTION = "prod_description";
     private static final String COLUMN_PROD_PRICE = "prod_price";
     private static final String COLUMN_TIPO_ID_FK = "tipo_id";
@@ -45,12 +46,16 @@ public class BaseDatos extends SQLiteOpenHelper {
     private static final String COLUMN_TIPO_IMAGE = "tipo_image";
 
     private static final String TABLE_PEDIDO = "Pedido";
+    private static final String COLUMN_PEDIDO_PEDIDO_ID = "pedido_id";
     private static final String COLUMN_PEDIDO_USER_ID = "user_id";
-    private static final String COLUMN_PEDIDO_PROD_ID = "prod_id";
-    private static final String COLUMN_PEDIDO_PROD_DESCRIP = "prod_description";
     private static final String COLUMN_PEDIDO_LOCAL_ID = "local_id";
     private static final String COLUMN_PEDIDO_DIR_ID = "dir_id";
-    private static final String COLUMN_PEDIDO_CANTIDAD = "pedido_cantidad";
+    private static final String COLUMN_PEDIDO_REALIZADO = "realizado";
+
+    private static final String TABLE_PEDIDO_PRODUCTO = "PedidoProducto";
+    private static final String COLUMN_PEDIDO_PRODUCTO_PEDIDO_ID = "pedido_id";
+    private static final String COLUMN_PEDIDO_PRODUCTO_PROD_ID = "prod_id";
+    private static final String COLUMN_PEDIDO_PRODUCTO_CANTIDAD = "pedido_producto_cantidad";
 
     public BaseDatos(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -101,19 +106,19 @@ public class BaseDatos extends SQLiteOpenHelper {
         db.execSQL(queryLocal);
 
         // Insertar datos de ejemplo en la tabla "local"
-        String insertLocal = "INSERT INTO " + TABLE_LOCAL + " VALUES(NULL, 'San Miguel', -12.020202, -77.550030, '(51) 300-1000');";
+        String insertLocal = "INSERT INTO " + TABLE_LOCAL + " VALUES(NULL, 'San Miguel', -12.0408714,-77.0742315, '(51) 300-1000');";
         db.execSQL(insertLocal);
 
-        insertLocal = "INSERT INTO " + TABLE_LOCAL + " VALUES(NULL, 'San Isidro', -12.020214, -77.550030, '(51) 300-2000');";
+        insertLocal = "INSERT INTO " + TABLE_LOCAL + " VALUES(NULL, 'San Isidro', -12.095041,-77.0404459, '(51) 300-2000');";
         db.execSQL(insertLocal);
 
-        insertLocal = "INSERT INTO " + TABLE_LOCAL + " VALUES(NULL, 'Miraflores', -12.020263, -77.550030, '(51) 300-3000');";
+        insertLocal = "INSERT INTO " + TABLE_LOCAL + " VALUES(NULL, 'Miraflores', -12.1292492,-77.0343758, '(51) 300-3000');";
         db.execSQL(insertLocal);
 
-        insertLocal = "INSERT INTO " + TABLE_LOCAL + " VALUES(NULL, 'San Juan de Lurigancho', -12.0202609, -77.550030, '(51) 300-4000');";
+        insertLocal = "INSERT INTO " + TABLE_LOCAL + " VALUES(NULL, 'San Juan de Lurigancho', -12.006077,-76.9965056, '(51) 300-4000');";
         db.execSQL(insertLocal);
 
-        insertLocal = "INSERT INTO " + TABLE_LOCAL + " VALUES(NULL, 'Los Olivos', -12.0212334, -77.550030, '(51) 300-5000');";
+        insertLocal = "INSERT INTO " + TABLE_LOCAL + " VALUES(NULL, 'Los Olivos', -11.9341929,-77.0770731, '(51) 300-5000');";
         db.execSQL(insertLocal);
 
         // Crear la tabla "TipoProducto"
@@ -137,6 +142,7 @@ public class BaseDatos extends SQLiteOpenHelper {
         // Crear la tabla "Producto"
         String queryProducto = "CREATE TABLE " + TABLE_PRODUCTO + " ("
                 + COLUMN_PROD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COLUMN_PROD_TITTLE + " TEXT NOT NULL, "
                 + COLUMN_PROD_DESCRIPTION + " TEXT NOT NULL, "
                 + COLUMN_PROD_PRICE + " REAL NOT NULL, "
                 + COLUMN_TIPO_ID_FK + " INTEGER NOT NULL, "
@@ -146,48 +152,55 @@ public class BaseDatos extends SQLiteOpenHelper {
         db.execSQL(queryProducto);
 
         // Insertar datos de ejemplo en la tabla "tipo producto"
-        String insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Torta helada', 12, 1, 'tortahelada');";
+        String insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Torta helada','Tarta elaborada con helado y pastel o helado en forma de tarta. Puede incluir múltiples ingredientes, como bizcocho, crema o chocolate, entre otros.', 12, 1, 'tortahelada');";
         db.execSQL(insertProducto);
 
-        insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Selva negra', 17, 1, 'selvanegra');";
+        insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Selva negra','La tarta o torta Selva Negra (en alemán, Schwarzwälder Kirschtorte) es una tarta típica de la cocina de Baden y uno de los dulces más característicos de la gastronomía alemana.', 17, 1, 'selvanegra');";
         db.execSQL(insertProducto);
 
-        insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Helado con frutas', 10, 2, 'heladoconfruta');";
+        insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Helado artesanal','Los helados artesanales tienen bajo contenido de grasa, un 6 por ciento. Fortalece los huesos y regula la presión arterial a través de su aporte de calcio.', 10, 2, 'heladoartesanal');";
         db.execSQL(insertProducto);
 
-        insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Banana Split', 8, 2, 'bananasplit');";
+        insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Banana Split','Banana split es un postre que lleva un plátano cortado en dos y bolas de helado de vainilla, chocolate y fresa. Se le agrega caramelo, sirope de chocolate y sirope de fresa. Se decora con crema batida, nueces y una cereza encima.', 8, 2, 'bananasplit');";
         db.execSQL(insertProducto);
 
-        insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Tres leches', 14, 1, 'tresleches');";
+        insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Tres leches','El Tres leches es un pastel húmedo y denso originario de Latinoamérica, bañado con una mezcla de tres leches: leche condensada, leche evaporada y crema para batir.', 14, 1, 'tresleches');";
         db.execSQL(insertProducto);
 
-        insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Torta de zanahoria', 16, 1, 'tortazanahoria');";
+        insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Pastel de zanahoria','Posee vitaminas A, K1, Potasio y vitamina B6 ideales para aportar energía al organismo y fortalecer el sistema inmunológico.', 16, 1, 'pastelzanahoria');";
         db.execSQL(insertProducto);
 
-        insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Torta helada', 12, 1, 'tortahelada');";
+        insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Torta Red Velvet','“Red Velvet cake” es un pastel de color rojo oscuro, rojo brillante o rojo-marron. Se prepara como un pastel en capas con sabor a vainilla o chocolate cubierto con un glaseado de queso cremoso o roux cocinado.', 12, 1, 'tortaredvelvet');";
         db.execSQL(insertProducto);
 
-        insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Cheesecake de durazno', 20, 3, 'cheesecakedurazno');";
+        insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Cheesecake de durazno','Su origen se dio hace miles de años, pero muchos son los que piensan que viene de New York, la realidad es que el origen del cheesecake está en la antigua Grecia y el Imperio Romano.', 20, 3, 'cheesecakedurazno');";
         db.execSQL(insertProducto);
 
-        insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Cheesecake de fresa', 22, 1, 'cheesecakefresa');";
+        insertProducto = "INSERT INTO " + TABLE_PRODUCTO + " VALUES(NULL, 'Cheesecake de fresa','Su origen se dio hace miles de años, pero muchos son los que piensan que viene de New York, la realidad es que el origen del cheesecake está en la antigua Grecia y el Imperio Romano.', 22, 3, 'cheesecakefresa');";
         db.execSQL(insertProducto);
 
         // Crear la tabla "Pedido"
         String queryPedido = "CREATE TABLE " + TABLE_PEDIDO + " ("
+                + COLUMN_PEDIDO_PEDIDO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COLUMN_PEDIDO_USER_ID + " INTEGER NOT NULL, "
-                + COLUMN_PEDIDO_PROD_ID + " INTEGER NOT NULL, "
-                + COLUMN_PEDIDO_PROD_DESCRIP + " INTEGER NOT NULL, "
-                + COLUMN_PEDIDO_LOCAL_ID + " INTEGER NOT NULL, "
-                + COLUMN_PEDIDO_DIR_ID + " INTEGER NOT NULL, "
-                + COLUMN_PEDIDO_CANTIDAD + " INTEGER NOT NULL, "
+                + COLUMN_PEDIDO_LOCAL_ID + " INTEGER, "
+                + COLUMN_PEDIDO_DIR_ID + " INTEGER, "
+                + COLUMN_PEDIDO_REALIZADO + " INTEGER NOT NULL DEFAULT 0, " // Por defecto, el pedido no está realizado
                 + "FOREIGN KEY (" + COLUMN_PEDIDO_USER_ID + ") REFERENCES " + TABLE_USUARIO + "(" + COLUMN_USER_ID + "), "
-                + "FOREIGN KEY (" + COLUMN_PEDIDO_PROD_ID + ") REFERENCES " + TABLE_PRODUCTO + "(" + COLUMN_PROD_ID + "), "
-                + "FOREIGN KEY (" + COLUMN_PEDIDO_PROD_DESCRIP + ") REFERENCES " + TABLE_PRODUCTO + "(" + COLUMN_PROD_ID + "), "
                 + "FOREIGN KEY (" + COLUMN_PEDIDO_LOCAL_ID + ") REFERENCES " + TABLE_LOCAL + "(" + COLUMN_LOCAL_ID + "), "
                 + "FOREIGN KEY (" + COLUMN_PEDIDO_DIR_ID + ") REFERENCES " + TABLE_DIRECCION_USUARIO + "(" + COLUMN_DIR_ID + ")"
                 + ");";
         db.execSQL(queryPedido);
+
+        // Crear la tabla "Pedido Producto"
+        String queryPedidoProducto = "CREATE TABLE " + TABLE_PEDIDO_PRODUCTO + " ("
+                + COLUMN_PEDIDO_PRODUCTO_PEDIDO_ID + " INTEGER NOT NULL, "
+                + COLUMN_PEDIDO_PRODUCTO_PROD_ID + " INTEGER NOT NULL, "
+                + COLUMN_PEDIDO_PRODUCTO_CANTIDAD + " INTEGER NOT NULL, "
+                + "FOREIGN KEY (" + COLUMN_PEDIDO_PRODUCTO_PEDIDO_ID + ") REFERENCES " + TABLE_PEDIDO + "(" + COLUMN_PEDIDO_PEDIDO_ID + "), "
+                + "FOREIGN KEY (" + COLUMN_PEDIDO_PRODUCTO_PROD_ID + ") REFERENCES " + TABLE_PRODUCTO + "(" + COLUMN_PROD_ID + ")"
+                + ");";
+        db.execSQL(queryPedidoProducto);
     }
 
     @Override

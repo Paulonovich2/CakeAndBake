@@ -28,17 +28,19 @@ import com.pjimenez.cakeandbake.entidades.EntUsuario;
 import com.pjimenez.cakeandbake.model.DAOProducto;
 import com.pjimenez.cakeandbake.entidades.EntProducto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Producto extends AppCompatActivity {
 
-    ImageButton btnMenu;
+    ImageButton btnMenu, btnShoppingCar;
     CheckBox checkboxTorta, checkboxHelado, checkboxCheesecake;
     private ListView listView;
     private List<EntProducto> productos, productosFiltrados;
     TextView lblUsuario, lblDireccionLocal;
     private String nombreCliente, direccionLocal;
+    private int pedidoId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,11 @@ public class Producto extends AppCompatActivity {
 
         // Crear una lista vacía para los productos filtrados
         productosFiltrados = new ArrayList<>();
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            pedidoId = intent.getIntExtra("pedidoId", 0);
+        }
     }
 
     private void asignarReferencia() {
@@ -77,7 +84,7 @@ public class Producto extends AppCompatActivity {
         // Crear una lista de nombres de productos
         List<String> nombresProductos = new ArrayList<>();
         for (EntProducto producto : productos) {
-            nombresProductos.add(producto.getDescripcion());
+            nombresProductos.add(producto.getTitulo());
         }
 
         // Configurar el adaptador del ListView
@@ -94,9 +101,7 @@ public class Producto extends AppCompatActivity {
                 // Crear un Intent para abrir la otra actividad
                 Intent intent = new Intent(Producto.this, ProductoPedido.class);
                 // Pasa cualquier dato adicional a la otra actividad si es necesario
-                intent.putExtra("nombreCliente", nombreCliente);
-                intent.putExtra("direccionLocal", direccionLocal);
-                intent.putExtra("producto", productoSeleccionado.getDescripcion());
+                intent.putExtra("prod_id", String.valueOf(productoSeleccionado.getId()));
                 startActivity(intent);
             }
         });
@@ -130,6 +135,13 @@ public class Producto extends AppCompatActivity {
         btnMenu = findViewById(R.id.btnMenu);
         btnMenu.setOnClickListener(v -> {
             Intent intent1 = new Intent(this, Menu.class);
+            startActivity(intent1);
+        });
+
+        btnShoppingCar= findViewById(R.id.btnShoppingCar);
+        btnShoppingCar.setOnClickListener(v -> {
+            Intent intent1 = new Intent(this, ConfirmarPedido.class);
+            intent1.putExtra("pedidoId", pedidoId);
             startActivity(intent1);
         });
     }
@@ -180,7 +192,7 @@ public class Producto extends AppCompatActivity {
         // Crear una lista de nombres de productos filtrados
         List<String> nombresProductosFiltrados = new ArrayList<>();
         for (EntProducto producto : productosFiltrados) {
-            nombresProductosFiltrados.add(producto.getDescripcion());
+            nombresProductosFiltrados.add(producto.getTitulo());
         }
 
         // Crear un nuevo adaptador con la lista de nombres de productos filtrados

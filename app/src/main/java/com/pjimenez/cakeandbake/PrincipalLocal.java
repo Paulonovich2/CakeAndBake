@@ -18,10 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PrincipalLocal extends AppCompatActivity {
-
-    ImageButton btnDelivery;
-    ImageButton btnMenu;
-    Button btnProductos;
+    ImageButton btnDelivery, btnMenu;
     RecyclerView lstUbicacionLocal;
     filaLocal adaptador;
     List<EntLocal> listaEntLocal = new ArrayList<>();

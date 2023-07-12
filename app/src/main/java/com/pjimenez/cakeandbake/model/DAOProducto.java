@@ -38,12 +38,13 @@ public class DAOProducto {
         if (cursor.moveToFirst()) {
             do {
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow("prod_id"));
+                String titulo = cursor.getString(cursor.getColumnIndexOrThrow("prod_tittle"));
                 String descripcion = cursor.getString(cursor.getColumnIndexOrThrow("prod_description"));
                 double precio = cursor.getDouble(cursor.getColumnIndexOrThrow("prod_price"));
                 int tipoId = cursor.getInt(cursor.getColumnIndexOrThrow("tipo_id"));
                 String imagen = cursor.getString(cursor.getColumnIndexOrThrow("prod_image"));
 
-                EntProducto entProducto = new EntProducto(id, descripcion, precio, tipoId, imagen);
+                EntProducto entProducto = new EntProducto(id, titulo,descripcion, precio, tipoId, imagen);
                 listaEntProductos.add(entProducto);
             } while (cursor.moveToNext());
         }
@@ -62,12 +63,13 @@ public class DAOProducto {
         EntProducto entProducto = null;
 
         if (cursor.moveToFirst()) {
+            String titulo = cursor.getString(cursor.getColumnIndexOrThrow("prod_tittle"));
             String descripcion = cursor.getString(cursor.getColumnIndexOrThrow("prod_description"));
             double precio = cursor.getDouble(cursor.getColumnIndexOrThrow("prod_price"));
             int tipoId = cursor.getInt(cursor.getColumnIndexOrThrow("tipo_id"));
             String imagen = cursor.getString(cursor.getColumnIndexOrThrow("prod_image"));
 
-            entProducto = new EntProducto(id, descripcion, precio, tipoId, imagen);
+            entProducto = new EntProducto(id,titulo, descripcion, precio, tipoId, imagen);
         }
 
         cursor.close();
@@ -86,11 +88,12 @@ public class DAOProducto {
         if (cursor.moveToFirst()) {
             do {
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow("prod_id"));
+                String titulo = cursor.getString(cursor.getColumnIndexOrThrow("prod_tittle"));
                 String descripcion = cursor.getString(cursor.getColumnIndexOrThrow("prod_description"));
                 double precio = cursor.getDouble(cursor.getColumnIndexOrThrow("prod_price"));
                 String imagen = cursor.getString(cursor.getColumnIndexOrThrow("prod_image"));
 
-                EntProducto entProducto = new EntProducto(id, descripcion, precio, tipoId, imagen);
+                EntProducto entProducto = new EntProducto(id, titulo,descripcion, precio, tipoId, imagen);
                 listaEntProductos.add(entProducto);
             } while (cursor.moveToNext());
         }
