@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Producto extends AppCompatActivity {
+
     ImageButton btnMenu;
     CheckBox checkboxTorta, checkboxHelado, checkboxCheesecake;
     private ListView listView;
@@ -65,12 +66,6 @@ public class Producto extends AppCompatActivity {
             nombreCliente = intent.getStringExtra("nombreCliente");
             direccionLocal = intent.getStringExtra("direccionLocal");
         }
-
-        btnMenu = findViewById(R.id.btnMenu);
-        btnMenu.setOnClickListener(v -> {
-            Intent intentProducto = new Intent(this, Menu.class);
-            startActivity(intentProducto);
-        });
 
         // Inicializar el ListView
         listView = findViewById(R.id.lst_pasteles);
@@ -130,6 +125,12 @@ public class Producto extends AppCompatActivity {
                 filtrarProductosPorTipo(3, isChecked);
                 mostrarProductosFiltrados();
             }
+        });
+
+        btnMenu = findViewById(R.id.btnMenu);
+        btnMenu.setOnClickListener(v -> {
+            Intent intent1 = new Intent(this, Menu.class);
+            startActivity(intent1);
         });
     }
 
