@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:text="Elige cómo quieres comprar"
+            android:text="Elige qué deseas hacer"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lblUsuario" />
 
@@ -100,11 +100,11 @@
             android:id="@+id/btnContactenos"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:background="#B36E6F"
-            android:textColor="@color/white"
             android:layout_marginTop="20dp"
-            android:text="Contactanos" />
+            android:background="#B36E6F"
+            android:text="Contáctanos"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
 
     </LinearLayout>
 

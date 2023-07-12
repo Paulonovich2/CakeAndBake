@@ -29,6 +29,16 @@
             android:textSize="20sp"
             android:textColor="@color/white"/>
 
+        <ImageButton
+            android:id="@+id/btn_Menu"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="330dp"
+            android:background="@drawable/rf_control_circle"
+            android:contentDescription="Icono de menú"
+            android:src="@drawable/ic_menu" />
+
+
     </RelativeLayout>
 
     <LinearLayout

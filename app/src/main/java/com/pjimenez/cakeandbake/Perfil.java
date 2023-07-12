@@ -1,9 +1,12 @@
 package com.pjimenez.cakeandbake;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.pjimenez.cakeandbake.entidades.EntUsuario;
@@ -13,7 +16,7 @@ public class Perfil extends AppCompatActivity {
 
     EditText txtNombre, txtApellido, txtCorreo;
     Button btnActualizarPerfil;
-
+    ImageButton btnMenu;
     SessionManager sessionManager; // Nueva instancia de SessionManager
 
     @Override
@@ -33,6 +36,12 @@ public class Perfil extends AppCompatActivity {
         txtApellido = findViewById(R.id.txtApellido);
         txtCorreo = findViewById(R.id.txtCorreo);
         btnActualizarPerfil = findViewById(R.id.btnActualizarPerfil);
+
+        btnMenu = findViewById(R.id.btnMenu);
+        btnMenu.setOnClickListener(v -> {
+            Intent intent = new Intent(this, Menu.class);
+            startActivity(intent);
+        });
     }
 
     private void cargarDatosPerfil() {
