@@ -40,6 +40,7 @@ public class Producto extends AppCompatActivity {
     private List<EntProducto> productos, productosFiltrados;
     TextView lblUsuario, lblDireccionLocal;
     private String nombreCliente, direccionLocal;
+    private int pedidoId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,11 @@ public class Producto extends AppCompatActivity {
 
         // Crear una lista vacía para los productos filtrados
         productosFiltrados = new ArrayList<>();
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            pedidoId = intent.getIntExtra("pedidoId", 0);
+        }
     }
 
     private void asignarReferencia() {
@@ -135,6 +141,7 @@ public class Producto extends AppCompatActivity {
         btnShoppingCar= findViewById(R.id.btnShoppingCar);
         btnShoppingCar.setOnClickListener(v -> {
             Intent intent1 = new Intent(this, ConfirmarPedido.class);
+            intent1.putExtra("pedidoId", pedidoId);
             startActivity(intent1);
         });
     }

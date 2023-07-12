@@ -92,15 +92,10 @@ public class ProductoPedido extends AppCompatActivity {
                     pedido.setRealizado(false); // El pedido aún no está realizado
 
                     // Obtener una instancia de la base de datos en modo escritura
-                    BaseDatos dbHelper = new BaseDatos(ProductoPedido.this);
-                    SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-                    // Crear una instancia del DAO DAOPedido y guardar el pedido en la base de datos
-                    DAOPedido daoPedido = new DAOPedido(db);
+                    DAOPedido daoPedido = new DAOPedido(ProductoPedido.this);
                     pedidoId = (int) daoPedido.insertPedido(pedido);
 
                     GuardarProductoPedido(pedidoId,prodId,cantidad);
-                    db.close();
                 }
             }
         });
@@ -129,8 +124,8 @@ public class ProductoPedido extends AppCompatActivity {
                 // El producto se guardó correctamente en el pedido
                 Toast.makeText(ProductoPedido.this, "Pedido guardado correctamente", Toast.LENGTH_SHORT).show();
 
-                // Redirigir al usuario a la actividad principal o a otra pantalla
                 Intent intent = new Intent(ProductoPedido.this, Producto.class);
+                intent.putExtra("pedidoId", pedidoId);
                 startActivity(intent);
             } else {
                 // Ocurrió un error al guardar el producto en el pedido
