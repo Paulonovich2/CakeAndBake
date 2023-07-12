@@ -1,87 +1,68 @@
 package com.pjimenez.cakeandbake.entidades;
 
 public class EntPedido {
+    private int pedidoId;
+    private int userId;
+    private int localId;
+    private int dirId;
+    private boolean realizado;
 
-    private int id;
-    private int user_id;
-    private int prod_id;
-    private String prod_description;
-    private int local_id;
-    private int dir_id;
-    private int pedido_cantidad;
+    public EntPedido(){
 
-    public EntPedido(int id, int user_id, int prod_id, String prod_description, int local_id, int dir_id, int pedido_cantidad) {
-        this.id = id;
-        this.user_id = user_id;
-        this.prod_id = prod_id;
-        this.prod_description = prod_description;
-        this.local_id = local_id;
-        this.dir_id = dir_id;
-        this.pedido_cantidad = pedido_cantidad;
     }
 
-    public EntPedido(int user_id, int prod_id, String prod_description, int local_id, int dir_id, int pedido_cantidad) {
-        this.user_id = user_id;
-        this.prod_id = prod_id;
-        this.prod_description = prod_description;
-        this.local_id = local_id;
-        this.dir_id = dir_id;
-        this.pedido_cantidad = pedido_cantidad;
+    public EntPedido(int pedidoId, int userId, int localId, int dirId, boolean realizado) {
+        this.pedidoId = pedidoId;
+        this.userId = userId;
+        this.localId = localId;
+        this.dirId = dirId;
+        this.realizado = realizado;
     }
 
-    public int getId() {
-        return id;
+    public EntPedido(int userId, int localId, int dirId, boolean realizado) {
+        this.userId = userId;
+        this.localId = localId;
+        this.dirId = dirId;
+        this.realizado = realizado;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getPedidoId() {
+        return pedidoId;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public void setPedidoId(int pedidoId) {
+        this.pedidoId = pedidoId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public int getProd_id() {
-        return prod_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public void setProd_id(int prod_id) {
-        this.prod_id = prod_id;
+    public int getLocalId() {
+        return localId;
     }
 
-    public String getProd_description() {
-        return prod_description;
+    public void setLocalId(int localId) {
+        this.localId = localId;
     }
 
-    public void setProd_description(String prod_description) {
-        this.prod_description = prod_description;
+    public int getDirId() {
+        return dirId;
     }
 
-    public int getLocal_id() {
-        return local_id;
+    public void setDirId(int dirId) {
+        this.dirId = dirId;
     }
 
-    public void setLocal_id(int local_id) {
-        this.local_id = local_id;
+    public boolean isRealizado() {
+        return realizado;
     }
 
-    public int getDir_id() {
-        return dir_id;
-    }
-
-    public void setDir_id(int dir_id) {
-        this.dir_id = dir_id;
-    }
-
-    public int getPedido_cantidad() {
-        return pedido_cantidad;
-    }
-
-    public void setPedido_cantidad(int pedido_cantidad) {
-        this.pedido_cantidad = pedido_cantidad;
+    public void setRealizado(boolean realizado) {
+        this.realizado = realizado;
     }
 }

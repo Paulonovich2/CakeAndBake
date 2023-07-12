@@ -34,7 +34,7 @@ public class filaPedido extends RecyclerView.Adapter<filaPedido.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull filaPedido.MyViewHolder holder, int position) {
-        holder.filaProducto.setText(listsPedidos.get(position).getProd_description());
+        holder.filaProducto.setText(listsPedidos.get(position).getUserId());
     }
 
     @Override

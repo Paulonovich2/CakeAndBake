@@ -2,13 +2,15 @@ package com.pjimenez.cakeandbake.entidades;
 
 public class EntProducto {
     private int id;
+    private String titulo;
     private String descripcion;
     private double precio;
     private int tipoId;
     private String imagen;
 
-    public EntProducto(int id, String descripcion, double precio, int tipoId, String imagen) {
+    public EntProducto(int id,String titulo, String descripcion, double precio, int tipoId, String imagen) {
         this.id = id;
+        this.titulo=titulo;
         this.descripcion = descripcion;
         this.precio = precio;
         this.tipoId = tipoId;
@@ -21,6 +23,14 @@ public class EntProducto {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getDescripcion() {
