@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Producto extends AppCompatActivity {
-
+    ImageButton btnMenu;
     CheckBox checkboxTorta, checkboxHelado, checkboxCheesecake;
     private ListView listView;
     private List<EntProducto> productos, productosFiltrados;
@@ -64,6 +65,12 @@ public class Producto extends AppCompatActivity {
             nombreCliente = intent.getStringExtra("nombreCliente");
             direccionLocal = intent.getStringExtra("direccionLocal");
         }
+
+        btnMenu = findViewById(R.id.btnMenu);
+        btnMenu.setOnClickListener(v -> {
+            Intent intentProducto = new Intent(this, Menu.class);
+            startActivity(intentProducto);
+        });
 
         // Inicializar el ListView
         listView = findViewById(R.id.lst_pasteles);
